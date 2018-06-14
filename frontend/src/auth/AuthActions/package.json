@@ -1,0 +1,6 @@
+{
+  "name": "AuthActions",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./AuthActions.js"
+}

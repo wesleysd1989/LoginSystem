@@ -1,0 +1,6 @@
+{
+  "name": "AuthOrApp",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./AuthOrApp.jsx"
+}
