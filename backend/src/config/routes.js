@@ -12,12 +12,12 @@ module.exports = function (server) {
     */
     server.use('/api', protectedApi)
     protectedApi.use(auth)
-    protectedApi.post('/signup', AuthService.signup)
     BillingCycle.register(protectedApi, '/billingCycles')
     /*
     * Rotas abertas
     */
     server.use('/oapi', openApi)
-    openApi.post('/login', AuthService.login)
+    openApi.post('/login', AuthService.login)    
+    openApi.post('/signup', AuthService.signup)
     openApi.post('/validateToken', AuthService.validateToken)
 }
