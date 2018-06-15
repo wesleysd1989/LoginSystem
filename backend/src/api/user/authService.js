@@ -64,7 +64,7 @@ const signup = (req, res, next) => {
                 if (err) {
                     return sendErrorsFromDB(res, err)
                 } else {
-                    return res.status(200).send({msg: 'Usuário cadastrado com sucesso.'})
+                    login(req, res, next)
                 }
             })
         }
