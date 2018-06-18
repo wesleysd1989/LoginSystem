@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
@@ -18,8 +18,8 @@ class Full extends Component {
       <div className="app">
         <Header />
         <div className="app-body">
-            <Sidebar {...this.props}/>
-            <main className="main">
+          <Sidebar {...this.props} />
+          <main className="main">
             <Breadcrumb />
             <Container fluid>
               <Switch>
@@ -38,4 +38,4 @@ class Full extends Component {
   }
 }
 
-export default Full;
+export default Full

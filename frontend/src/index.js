@@ -20,8 +20,6 @@ import '../scss/style.scss'
 import '../scss/core/_dropdown-menu-right.scss'
 
 // Containers
-import Full from './containers/Full/'
-
 import Home from './views/Home/'
 
 import reducers from './reducers/'
