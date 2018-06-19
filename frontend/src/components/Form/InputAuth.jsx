@@ -2,7 +2,7 @@ import React from 'react'
 import If from '../../containers/If/'
 export default props => (
     <If test={!props.hide}>
-        <div >
+        <div style={{width: '75%'}}>
             <input {...props.input}
                 className='form-control'
                 placeholder={props.placeholder}
