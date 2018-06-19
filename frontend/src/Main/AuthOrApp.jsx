@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Auth from '../views/Login/Login.jsx'
+import Auth from '../views/Login/'
 import App from '../containers/Full/'
 import { validateToken } from '../auth/AuthActions/AuthActions'
 class AuthOrApp extends Component {

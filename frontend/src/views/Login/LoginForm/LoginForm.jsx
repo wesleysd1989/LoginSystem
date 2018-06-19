@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { login } from '../../../auth/AuthActions/'
+import { login } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
 import { Container, Row, Col, CardGroup, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
@@ -11,10 +12,6 @@ import { Container, Row, Col, CardGroup, Card, CardBody, Button, InputGroup, Inp
 class Auth extends Component {
   constructor(props) {
     super(props)
-    this.state = { loginMode: true }
-  }
-  changeMode() {
-    this.setState({ loginMode: !this.state.loginMode })
   }
   onSubmit(values) {
     const { login } = this.props
@@ -66,7 +63,9 @@ class Auth extends Component {
                       <h2>Sign up</h2>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.</p>
-                    <Button color="primary" className="mt-3" active>Register Now!</Button>
+                      <Link to='/signup' style={{textDecoration: 'none'}}>
+                        <Button color="primary" className="mt-3" active>Register Now!</Button>
+                      </Link>
                     </div>
                   </CardBody>
                 </Card>

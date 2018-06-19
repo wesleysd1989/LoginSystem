@@ -1,9 +1,23 @@
 
-import React, {Component} from 'react';
-import {Container, Row, Col, Card, CardBody, CardFooter, Button, Input, InputGroup, InputGroupAddon, InputGroupText} from 'reactstrap';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { signup } from '../../../auth/AuthActions'
+import Input from '../../../components/Form/'
+import { Container, Row, Col, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 class Register extends Component {
+  constructor(props) {
+    super(props)
+  }
+  onSubmit(values) {
+    const { signup } = this.props
+    signup(values)
+  }
   render() {
+    const { handleSubmit } = this.props
     return (
       <div className="app flex-row align-items-center">
         <Container>
@@ -11,50 +25,51 @@ class Register extends Component {
             <Col md="6">
               <Card className="mx-4">
                 <CardBody className="p-4">
-                  <h1>Register</h1>
-                  <p className="text-muted">Create your account</p>
-                  <InputGroup className="mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="icon-user"></i>
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input type="text" placeholder="Username"/>
-                  </InputGroup>
-                  <InputGroup className="mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>@</InputGroupText>
-                    </InputGroupAddon>
-                    <Input type="text" placeholder="Email"/>
-                  </InputGroup>
-                  <InputGroup className="mb-3">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="icon-lock"></i>
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input type="password" placeholder="Password"/>
-                  </InputGroup>
-                  <InputGroup className="mb-4">
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="icon-lock"></i>
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input type="password" placeholder="Repeat password"/>
-                  </InputGroup>
-                  <Button color="success" block>Create Account</Button>
+                  <form onSubmit={handleSubmit(v => this.onSubmit(v))}>
+                    <h1>Register</h1>
+                    <p className="text-muted">Create your account</p>
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-user"></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Field style={{height: '1000px'}} component={Input} type="input" name="name" placeholder="Username" />
+                    </InputGroup>
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>@</InputGroupText>
+                      </InputGroupAddon>
+                      <Field component={Input} type="email" name="email" placeholder="E-mail" />
+                    </InputGroup>
+                    <InputGroup className="mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-lock"></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Field component={Input} type="password" name="password" placeholder="Password" />
+                    </InputGroup>
+                    <InputGroup className="mb-4">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="icon-lock"></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Field xs="12" md="12" sm="12" lg="6" component={Input} type="password" name="confirm_password" placeholder="Repeat password" />
+                    </InputGroup>
+                    <Row>
+                      <Col xs="12" md="12" sm="12" lg="6">
+                        <Button color="success" className="px-4 my-2" block>Create Account</Button>
+                      </Col>
+                      <Col xs="12" md="12" sm="12" lg="6" >
+                        <Link to='/login' style={{ textDecoration: 'none' }}>
+                          <Button color="success" className="px-4 my-2" block >Cancel</Button>
+                        </Link>
+                      </Col>
+                    </Row>
+                  </form>
                 </CardBody>
-                <CardFooter className="p-4">
-                  <Row>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-facebook" block><span>facebook</span></Button>
-                    </Col>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-twitter" block><span>twitter</span></Button>
-                    </Col>
-                  </Row>
-                </CardFooter>
               </Card>
             </Col>
           </Row>
@@ -63,5 +78,7 @@ class Register extends Component {
     );
   }
 }
-
-export default Register;
+Register = reduxForm({ form: 'registerForm' })(Register)
+const mapDispatchToProps = dispatch => bindActionCreators({ signup },
+  dispatch)
+export default connect(null, mapDispatchToProps)(Register)
