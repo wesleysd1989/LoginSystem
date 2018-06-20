@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import Messages from '../../../common/Messages/'
 import { login } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
-import { Container, Row, Col, CardGroup, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
+import { Container, Row, Col, CardGroup, Card, CardBody, CardFooter, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 
 class Auth extends Component {
@@ -57,6 +57,16 @@ class Auth extends Component {
                       </Row>
                     </form>
                   </CardBody>
+                  <CardFooter className="p-4 d-none d-md-block d-lg-none">
+                  <Row>
+                    <Col xs="12" sm="6">
+                      <Button className="btn-facebook" block><span>facebook</span></Button>
+                    </Col>
+                    <Col xs="12" sm="6">
+                      <Button className="btn-twitter" block><span>twitter</span></Button>
+                    </Col>
+                  </Row>
+                </CardFooter>
                 </Card>
                 <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: 44 + '%' }}>
                   <CardBody className="text-center">
