@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch, Swit, Redirect, IndexRoute  } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux'
 import promise from 'redux-promise'
@@ -24,7 +24,7 @@ import Home from './views/Home/'
 
 import reducers from './reducers/'
 
-import AuthOrApp from './Main/'
+import AuthOrApp from './Main/AuthOrApp/'
 
 
 //const store = cfgStore()
@@ -41,20 +41,4 @@ ReactDOM.render((
       </Switch>
     </HashRouter>
   </Provider>
-), document.getElementById('root'));
-
-/*
-<Switch>
-                <Route path="/dashboard" name="Dashboard" component={Dashboard} />
-                <Route path="/subject/list" name="SubjectList" component={SubjectList} />
-                <Route path="/subject/new" name="SubjectCreate" component={SubjectCreate} />
-                
-              </Switch>
-
-        <Route path='/' component={App}>
-            <IndexRoute component={Dashboard} />
-            <Route path='billingCycles' component={BillingCycle} />
-        </Route>
-        <Redirect from='*' to='/' />
-
-*/
+), document.getElementById('root'))

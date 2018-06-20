@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Messages from '../../../common/Messages/'
 import { login } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
 import { Container, Row, Col, CardGroup, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
@@ -73,6 +74,7 @@ class Auth extends Component {
             </Col>
           </Row>
         </Container>
+        <Messages />
       </div >
     )
   }

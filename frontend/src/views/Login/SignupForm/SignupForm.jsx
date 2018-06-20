@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Messages from '../../../common/Messages/'
 import { signup } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
 import { Container, Row, Col, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
@@ -74,6 +75,7 @@ class Register extends Component {
             </Col>
           </Row>
         </Container>
+        <Messages />
       </div>
     );
   }
