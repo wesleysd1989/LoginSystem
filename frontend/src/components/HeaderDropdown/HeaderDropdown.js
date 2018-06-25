@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logout } from '../../auth/AuthActions/AuthActions'
 import {
-  Badge,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
@@ -35,7 +34,7 @@ class HeaderDropdown extends Component {
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem header tag="div" className="text-center"><strong>Settings</strong></DropdownItem>
-          <DropdownItem><i className="fa fa-user"></i> Profile</DropdownItem>
+          <DropdownItem href="#/profile"><i className="fa fa-user"></i>Profile</DropdownItem>
           <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem>
           <DropdownItem><i className="fa fa-shield"></i> Lock Account</DropdownItem>
           <DropdownItem onClick={this.props.logout}><i className="fa fa-lock" ></i> Logout</DropdownItem>

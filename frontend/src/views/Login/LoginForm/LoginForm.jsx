@@ -55,18 +55,13 @@ class Auth extends Component {
                           <Button color="link" className="px-0">Forgot password?</Button>
                         </Col>
                       </Row>
+                      <Row xs="6" className="mx-auto py-2 d-lg-none">
+                      <Link to='/signup' style={{ textDecoration: 'none' }}>
+                        <Button color="primary" className="px-4">Register Now!</Button>
+                      </Link>
+                    </Row>
                     </form>
                   </CardBody>
-                  <CardFooter className="p-4 d-none d-md-block d-lg-none">
-                  <Row>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-facebook" block><span>facebook</span></Button>
-                    </Col>
-                    <Col xs="12" sm="6">
-                      <Button className="btn-twitter" block><span>twitter</span></Button>
-                    </Col>
-                  </Row>
-                </CardFooter>
                 </Card>
                 <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: 44 + '%' }}>
                   <CardBody className="text-center">
@@ -74,7 +69,7 @@ class Auth extends Component {
                       <h2>Sign up</h2>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.</p>
-                      <Link to='/signup' style={{textDecoration: 'none'}}>
+                      <Link to='/signup' style={{ textDecoration: 'none' }}>
                         <Button color="primary" className="mt-3" active>Register Now!</Button>
                       </Link>
                     </div>

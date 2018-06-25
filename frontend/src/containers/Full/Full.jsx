@@ -10,6 +10,7 @@ import Footer from '../../components/Footer/';
 import Dashboard from '../../views/Dashboard/';
 import SubjectList from '../../views/Subject/SubjectList/';
 import SubjectCreate from '../../views/Subject/SubjectCreate/';
+import Profile from '../../views/Profile/'
 
 
 class Full extends Component {
@@ -26,6 +27,7 @@ class Full extends Component {
                 <Route path="/dashboard" name="Dashboard" component={Dashboard} />
                 <Route path="/subject/list" name="SubjectList" component={SubjectList} />
                 <Route path="/subject/new" name="SubjectCreate" component={SubjectCreate} />
+                <Route path="/profile" name="profile" component={Profile}/>
                 <Redirect from="/" to="/dashboard" />
               </Switch>
             </Container>
