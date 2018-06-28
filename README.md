@@ -8,7 +8,7 @@
 - [ ] Recovery password
 - [ ] User activation by E-mail
 - [ ] Two-factor Authentication (2FA)
-- [ ] Notificiation E-mail Login
+- [x] Notificiation E-mail Login
 - [ ] reCAPTCHA
 
 ## License
