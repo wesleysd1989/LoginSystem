@@ -3,6 +3,7 @@ const _ = require('lodash')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('./user')
+const {notification} = require('../mailer/mailer')
 const env = require('../../../.env')
 const emailRegex = /\S+@\S+\.\S+/
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
@@ -12,6 +13,12 @@ const sendErrorsFromDB = (res, dbErrors) => {
     return res.status(400).json({ errors })
 }
 const login = (req, res, next) => {
+    var ip = (
+        req.headers["X-Forwarded-For"] || 
+        req.headers["x-forwarded-for"] || 
+        req.client.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress).split(",")[0]
     const email = req.body.email || ''
     const password = req.body.password || ''
     User.findOne({ email }, (err, user) => {
@@ -22,6 +29,7 @@ const login = (req, res, next) => {
                 expiresIn: '1 day'
             })
             const { name, email } = user
+            notification(email, ip)
             res.json({ name, email, token })
         } else {
             return res.status(400).send({ errors: ['Usuário/Senha inválidos'] })
