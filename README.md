@@ -9,7 +9,7 @@
 - [ ] User activation by E-mail
 - [ ] Two-factor Authentication (2FA)
 - [x] Notificiation E-mail Login
-- [ ] reCAPTCHA
+- [x] reCAPTCHA
 
 ## License
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)
