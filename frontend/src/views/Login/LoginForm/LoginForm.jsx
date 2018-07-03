@@ -7,16 +7,26 @@ import { bindActionCreators } from 'redux'
 import Messages from '../../../common/Messages/'
 import { login } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
+import Reaptcha from 'reaptcha';
 import { Container, Row, Col, CardGroup, Card, CardBody, CardFooter, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 
 class Auth extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      verified: false
+    }
   }
   onSubmit(values) {
     const { login } = this.props
     login(values)
+  }
+
+  onVerify() {
+    this.setState({
+      verified: true
+    })
   }
   render() {
     const { handleSubmit } = this.props
@@ -47,19 +57,20 @@ class Auth extends Component {
                         </InputGroupAddon>
                         <Field component={Input} type="password" name="password" placeholder="Senha" />
                       </InputGroup>
+                      <Reaptcha className="py-2" sitekey="6LfNu2EUAAAAACnIMGhTsstR9NPn10UWyUhntEV1" onVerify={this.onVerify.bind(this)} />
                       <Row>
                         <Col xs="6">
-                          <Button color="primary" className="px-4">Login</Button>
+                          <Button color="primary" className="px-4" type="submit" disabled={!this.state.verified}>Login</Button>
                         </Col>
                         <Col xs="6" className="text-right">
                           <Button color="link" className="px-0">Forgot password?</Button>
                         </Col>
                       </Row>
                       <Row xs="6" className="mx-auto py-2 d-lg-none">
-                      <Link to='/signup' style={{ textDecoration: 'none' }}>
-                        <Button color="primary" className="px-4">Register Now!</Button>
-                      </Link>
-                    </Row>
+                        <Link to='/signup' style={{ textDecoration: 'none' }}>
+                          <Button color="primary" className="px-4">Register Now!</Button>
+                        </Link>
+                      </Row>
                     </form>
                   </CardBody>
                 </Card>
