@@ -7,15 +7,24 @@ import { bindActionCreators } from 'redux'
 import Messages from '../../../common/Messages/'
 import { signup } from '../../../auth/AuthActions'
 import Input from '../../../components/Form/'
+import Reaptcha from 'reaptcha';
 import { Container, Row, Col, Card, CardBody, Button, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 
 class Register extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      verified: false
+    }
   }
   onSubmit(values) {
     const { signup } = this.props
     signup(values)
+  }
+  onVerify() {
+    this.setState({
+      verified: true
+    })
   }
   render() {
     const { handleSubmit } = this.props
@@ -59,9 +68,10 @@ class Register extends Component {
                       </InputGroupAddon>
                       <Field xs="12" md="12" sm="12" lg="6" component={Input} type="password" name="confirm_password" placeholder="Repeat password" />
                     </InputGroup>
+                    <Reaptcha className="py-2" sitekey="6LfNu2EUAAAAACnIMGhTsstR9NPn10UWyUhntEV1" onVerify={this.onVerify.bind(this)} />
                     <Row>
                       <Col xs="12" md="12" sm="12" lg="6">
-                        <Button color="success" className="px-4 my-2" block>Create Account</Button>
+                        <Button color="success" className="px-4 my-2" block type="submit" disabled={!this.state.verified}>Create Account</Button>
                       </Col>
                       <Col xs="12" md="12" sm="12" lg="6" >
                         <Link to='/login' style={{ textDecoration: 'none' }}>
